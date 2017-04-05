@@ -3,28 +3,8 @@
     "LOGO": "BBInvest",
     "MENU": {
       "HOME": "Домой",
-      "ABOUT": "О нас",
-      "PRODUCTS": "Продукты",
-      "CONTACTS": "Контакты"
+      "ABOUT": "О нас"
     }
-  },
-  "CREDITS": {
-    "BORROWER_TYPE": "Тип заемщика",
-    "BORROWER": "Заемщик",
-    "SUM": "Сумма",
-    "CURRENCY": "Валюта",
-    "CREDIT_TERM": "Срок кредитования",
-    "COUNTRY": "Страна",
-    "MONEY_COLLECTED": "Собрано денег в сумме",
-    "INITIAL_DATE": "Дата старта заявки",
-    "FINAL_DATE": "Дата финиша сбора",
-    "GUARANTOR": "Поручительство",
-    "INSURANCE": "Страхование",
-    "BORROWER_SCORE": "Рейтинг заемщика",
-    "SCORE": "Score",
-    "STATUS": "Статус",
-    "ACTIONS": "Действия",
-    "LOAN_TICKETS": "Открытый реестр кредитных заявок"
   },
   "NAVIGATION": {
     "PAGINATOR": {
@@ -38,49 +18,6 @@
       "TICKETS":"Тикеты",
       "CREDITS":"Кредиты"
     }
-  },
-  "TICKETS":{
-    "MY_TICKETS":"Мои тикеты",
-    "ID":"ID",
-    "DATE":"Дата",
-    "DEPARTMENT":"Отдел",
-    "SUBJECT":"Тема",
-    "STATUS":"Состояние",
-    "LAST_UPDATE":"Последнее изменение",
-    "NAME": "Имя",
-    "EMAIL": "E-mail",
-    "PRIORITY":"Приоритет",
-    "MESSAGE":"Сообщение",
-    "SUBMIT":"Создать",
-    "CREATE_TICKET":"Создать тикет",
-    "ATTACH_TICKET":"Прикрепить тикет",
-    "MANAGE_TICKETS":"Управлять тикетами",
-    "TICKETS":"Тикеты",
-    "NEW_TICKET":"Новый тикет",
-    "ALL_TICKETS":"Все тикеты",
-    "MY_TICKETS":"Мои тикеты",
-    "CREATED": "Создан",
-    "UPDATE": "Обновить",
-    "TEXT": "Текст",
-    "OWNER": "Создатель",
-    "CLOSE":"Закрыть тикет",
-    "SENDER":"Отправитель",
-    "REPLIES":"Ответы",
-    "REPLY":"Ответить",
-    "REPLY_TEXT":"Текст ответа",
-    "NO_REPLIES":"Нет ответов",
-
-    "open":"Открыт",
-    "processing":"Обрабатывается",
-    "closed":"Закрыт",
-
-    "credits": "Кредиты",
-    "deposits":"Депозиты",
-    "other":"Другое",
-
-    "high": "Высокий",
-    "medium": "Средний",
-    "low": "Низкий"
   },
   "AUTH":{
     "SIGN_UP":"Зарегистрироваться",

@@ -7,8 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { PartyGoersTableComponent } from './components/tables/party-goers-table/party-goers-table.component';
-import { PromotersTableComponent } from './components/tables/promoters-table/promoters-table.component';
+
 import { EventsTableComponent } from './components/tables/events-table/events-table.component';
 import { UsersTableComponent } from './components/tables/users-table/users-table.component';
 import {BasetableComponent} from "./components/tables/basetable/basetable.component";
@@ -18,6 +17,8 @@ import {translateLoader} from "./export";
 import {AppRoutingModule} from "./routes/app-routing/app-routing.module";
 import {IndexComponent} from "./components/index/index.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
+import {AdminService} from "./services/api/admin.service";
+import {LoggerService} from "./services/logger/logger.service";
 
 @NgModule({
   declarations: [
@@ -27,8 +28,7 @@ import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    PartyGoersTableComponent,
-    PromotersTableComponent,
+
     EventsTableComponent,
     UsersTableComponent,
     BasetableComponent,
@@ -47,7 +47,7 @@ import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.
       }
     )
   ],
-  providers: [],
+  providers: [AdminService,LoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

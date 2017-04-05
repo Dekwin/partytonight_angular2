@@ -33,6 +33,8 @@ export class BasetableComponent implements OnInit {
   ngOnInit() {
   }
   
+  
+  
   dataReceived(data){
     this.stopReloadingView();
     this.dataEmitter.emit(data);
