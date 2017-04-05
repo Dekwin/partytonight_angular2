@@ -1,0 +1,11 @@
+<div class="container"  >
+  <table class="table table-hover" [@reloadData]="reloadData" >
+    <ng-content></ng-content>
+  </table>
+  <app-paginator (dataFinishedLoad)= "dataReceived($event)"
+                 (dataBeganLoad)= "dataBeganLoad($event)"
+                 [apiMethod] = "apiMethod">
+  </app-paginator>
+
+</div>
+

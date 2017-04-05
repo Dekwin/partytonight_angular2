@@ -1,0 +1,28 @@
+
+<div>
+  <div class="container">
+
+    <div class="text-center">
+      <!-- pager -->
+      <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(1)">{{ 'NAVIGATION.PAGINATOR.FIRST' | translate }}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="setPage(pager.currentPage - 1)">{{ 'NAVIGATION.PAGINATOR.PREVIOUS' | translate }}</a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.currentPage + 1)">{{ 'NAVIGATION.PAGINATOR.NEXT' | translate }}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="setPage(pager.totalPages)">{{ 'NAVIGATION.PAGINATOR.LAST' | translate }}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--<div class="text-center">{{pager.totalItems}}  {{ 'NAVIGATION.PAGINATOR.ITEMS_FOUND' | translate }}</div>-->
+</div>
+

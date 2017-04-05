@@ -1,0 +1,95 @@
+{
+  "HEADER": {
+    "LOGO": "BBInvest",
+    "MENU": {
+      "HOME": "Home",
+      "ABOUT": "About",
+      "PRODUCTS": "Products",
+      "CONTACTS": "Contacts"
+    }
+  },
+  "CREDITS": {
+    "BORROWER_TYPE": "BORROWER TYPE",
+    "BORROWER": "BORROWER",
+    "SUM": "SUM",
+    "CURRENCY": "CURRENCY",
+    "CREDIT_TERM": "CREDIT TERM",
+    "COUNTRY": "COUNTRY",
+    "MONEY_COLLECTED": "MONEY COLLECTED",
+    "INITIAL_DATE": "INITIAL DATE",
+    "FINAL_DATE": "FINAL DATE",
+    "GUARANTOR": "GUARANTOR",
+    "INSURANCE": "INSURANCE",
+    "BORROWER_SCORE": "BORROWER SCORE",
+    "SCORE": "SCORE",
+    "STATUS": "STATUS",
+    "ACTIONS": "ACTIONS",
+    "LOAN_TICKETS": "Loan tickets"
+
+  },
+  "NAVIGATION": {
+    "PAGINATOR": {
+      "FIRST":"First",
+      "NEXT": "Next",
+      "PREVIOUS": "Previous",
+      "LAST": "Last",
+      "ITEMS_FOUND":"items found"
+    },
+    "OPERATIONS":{
+      "TICKETS":"Tickets",
+      "CREDITS":"Credits"
+    }
+  },
+  "TICKETS":{
+    "MY_TICKETS":"My tickets",
+    "ID":"ID",
+    "DATE":"Date",
+    "DEPARTMENT":"Department",
+    "SUBJECT":"Subject",
+    "STATUS":"Status",
+    "LAST_UPDATE":"Last update",
+    "NAME": "Name",
+    "EMAIL": "E-mail",
+    "PRIORITY":"Priority",
+    "MESSAGE":"Message",
+    "SUBMIT":"Create",
+    "CREATE_TICKET":"Create ticket",
+    "ATTACH_TICKET":"Attach ticket",
+    "MANAGE_TICKETS":"Manage ticket",
+    "TICKETS":"Tickets",
+    "NEW_TICKET":"New ticket",
+    "ALL_TICKETS":"All tickets",
+    "MY_TICKETS":"My tickets",
+    "CREATED": "Created",
+    "UPDATE": "Update",
+    "TEXT": "Text",
+    "OWNER": "Owner",
+    "CLOSE":"Close",
+    "SENDER":"Sender",
+    "REPLIES":"Replies",
+    "REPLY":"Reply",
+    "REPLY_TEXT":"Body of reply",
+    "NO_REPLIES":"No replies",
+
+    "open":"Open",
+    "processing":"Processing",
+    "closed":"Closed",
+
+    "credits": "Credits",
+    "deposits":"Deposits",
+    "other":"Other",
+
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+
+  },
+  "AUTH":{
+    "SIGN_UP":"Sign up",
+    "SIGN_IN":"Sign in",
+    "LOGOUT":"Logout"
+
+  }
+
+}
+
