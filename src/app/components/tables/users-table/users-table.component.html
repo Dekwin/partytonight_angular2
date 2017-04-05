@@ -1,0 +1,37 @@
+<app-basetable (dataEmitter) = "dataReceived($event)" [apiMethod] = "apiMethod" >
+  <caption *ngIf="userType == 'goers'">Goers</caption>
+  <caption *ngIf="userType == 'promoters'">Promoters</caption>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>Username</th>
+    <th>PhoneNumber</th>
+    <th>Email</th>
+    <th>Billing info</th>
+    <th>Emergency contact</th>
+    <th>Enabled</th>
+    <th>Verify</th>
+    <th>Delete</th>
+  </tr>
+
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users.items">
+    <td>{{user.id_user}}</td>
+    <td>{{user.userName}}</td>
+    <td>{{user.phoneNumber}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.billing}}</td>
+    <td>{{user.emergencyContact}}</td>
+    <td><div [ngSwitch]="user.enable">
+      <button class="btn btn-warning" (click)="setEnable(user,false)" *ngSwitchCase="true">Disable</button>
+      <button class="btn btn-success" (click)="setEnable(user,true)" *ngSwitchCase="false">Enable</button>
+      <div *ngSwitchDefault>-</div>
+    </div></td>
+    <td>-</td>
+    <td><button class="btn btn-danger" (click)="deleteUser(user)" >Delete</button></td>
+
+
+  </tr>
+  </tbody>
+</app-basetable>
