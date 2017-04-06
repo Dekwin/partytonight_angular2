@@ -16,7 +16,7 @@ export class UsersTableComponent implements OnInit {
 
   userType:string = "goers";
 
-  apiMethod:Function = new Function();
+  apiMethod:Function;
 
   constructor(private route:ActivatedRoute,
               private router:Router,private adminService:AdminService) {

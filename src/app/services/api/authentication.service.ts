@@ -12,27 +12,53 @@ export class AuthenticationService {
 
   constructor(private http: Http,private logger: LoggerService) { }
 
-  login(username: string, password: string) {
-    
-    let credentials = username + ":" + password;
-    let authorizationHeader = "Basic " + btoa(credentials);//toBase64();
-    let headers = new Headers({"Authorization": authorizationHeader});
-    let options = new RequestOptions({headers: headers});
+  // login(username: string, password: string) {
+  //
+  //   let credentials = username + ":" + password;
+  //   let authorizationHeader = "Basic " + btoa(credentials);//toBase64();
+  //   let headers = new Headers({"Authorization": authorizationHeader});
+  //   let options = new RequestOptions({headers: headers});
+  //
+  //   return this.http.post(environment.baseApiPath + '/token', {}, options)
+  //     .map((response: Response) => {
+  //
+  //       // login successful if there's a token token in the response
+  //       let user = response.json();
+  //
+  //       console.log(user);
+  //
+  //       if (user && user.token) {
+  //         // store user details and token token in local storage to keep user logged in between page refreshes
+  //         localStorage.setItem('currentUser', JSON.stringify(user));
+  //
+  //       }
+  //     }).catch(this.handleError);
+  // }
 
-    return this.http.post(environment.baseApiPath + '/token', {}, options)
-      .map((response: Response) => {
+  // getCurrentUser():UserEntity {
+  //   let userJson = JSON.parse(localStorage.getItem('currentUser'));
+  //   if(!userJson) return null;
+  //
+  //   return new UserEntity(userJson.user.id,userJson.user.nickname,userJson.user.email,userJson.user.Permissions,userJson.token);
+  // }
 
-        // login successful if there's a token token in the response
-        let user = response.json();
+  //mock
+  login(username: string, password: string): Observable<UserEntity>{
 
-        console.log(user);
+    var user = new UserEntity();
 
-        if (user && user.token) {
-          // store user details and token token in local storage to keep user logged in between page refreshes
-          localStorage.setItem('currentUser', JSON.stringify(user));
+    localStorage.setItem('currentUser', JSON.stringify(user));
 
-        }
-      }).catch(this.handleError);
+ 
+    return Observable.of(user)
+  }
+
+  //mock
+  getCurrentUser():UserEntity {
+    let userJson = JSON.parse(localStorage.getItem('currentUser'));
+    if(!userJson) return null;
+
+    return new UserEntity();
   }
 
   logout() {
@@ -40,12 +66,7 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
   }
 
-  getCurrentUser():UserEntity {
-    let userJson = JSON.parse(localStorage.getItem('currentUser'));
-    if(!userJson) return null;
 
-    return new UserEntity(userJson.user.id,userJson.user.nickname,userJson.user.email,userJson.user.Permissions,userJson.token);
-  }
 
   private handleError = (res: Response): Observable<any> => {
     this.logger.warn(res.toString());

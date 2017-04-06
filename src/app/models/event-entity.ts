@@ -19,9 +19,9 @@ export class EventEntity {
   private _users: UserEntity[];
 
 
-    get id_event():number {
+  get id_event():number{
       return this._id_event;
-    }
+      }
 
   set id_event(value:number){
       this._id_event=value;
@@ -79,7 +79,7 @@ export class EventEntity {
       return this._bottles;
       }
 
-  set bottles(value:Array){
+  set bottles(value:BottleEntity[]){
       this._bottles=value;
       }
 
@@ -87,7 +87,7 @@ export class EventEntity {
       return this._tickets;
       }
 
-  set tickets(value:Array){
+  set tickets(value:TicketEntity[]){
       this._tickets=value;
       }
 
@@ -95,7 +95,7 @@ export class EventEntity {
       return this._tables;
       }
 
-  set tables(value:Array){
+  set tables(value:TableEntity[]){
       this._tables=value;
       }
 
@@ -103,7 +103,7 @@ export class EventEntity {
       return this._photos;
       }
 
-  set photos(value:Array){
+  set photos(value:PhotoEntity[]){
       this._photos=value;
       }
 
@@ -111,12 +111,13 @@ export class EventEntity {
       return this._users;
       }
 
-  set users(value:Array){
+  set users(value:UserEntity[]){
       this._users=value;
-      }
+
+  }
 
 
-    constructor(id_event:number, club_name:string, date:string, location:string, club_capacity:string, party_name:string, zip_code:string, bottles:BottleEntity[], tickets:TicketEntity[], tables:TableEntity[], photos:PhotoEntity[], users:UserEntity[]) {
+  constructor(id_event:number = 1, club_name:string = "Noname club", date:string = "01.01.2000", location:string = "No location", club_capacity:string = "10", party_name:string = "Noname party", zip_code:string = "78648", bottles:BottleEntity[] = [], tickets:TicketEntity[] = [], tables:TableEntity[] = [], photos:PhotoEntity[] = [], users:UserEntity[] = []) {
       this._id_event = id_event;
       this._club_name = club_name;
       this._date = date;
@@ -126,8 +127,8 @@ export class EventEntity {
       this._zip_code = zip_code;
       this._bottles = bottles;
       this._tickets = tickets;
-      this._tables = tables;
-      this._photos = photos;
-      this._users = users;
-    }
+          this._tables = tables;
+          this._photos = photos;
+          this._users = users;
+      }
 }

@@ -3,31 +3,31 @@ import {EventEntity} from "./event-entity";
  * Created by igorkasyanenko on 07.03.17.
  */
 export class UserEntity {
- 
+
   private _id_user:number;
-  
+
   private _userName:string;
-  
+
   private _phoneNumber:string;
-  
+
   private _email:string;
-  
+
   private _emergencyContact:string;
-  
+
   private _password:string;
-  
+
   private _enable:boolean;
-  
+
   private _updatedDate:string;
 
   private _createdDate:string;
-  
+
   private  _billingEmail:string;
-  
+
   private _role: any;
 
   private _billing: any;
-  
+
   private _events: EventEntity[];
 
 
@@ -131,7 +131,7 @@ export class UserEntity {
       return this._events;
       }
 
-  set events(value:Array){
+  set events(value:EventEntity[]){
       this._events=value;
       }
 

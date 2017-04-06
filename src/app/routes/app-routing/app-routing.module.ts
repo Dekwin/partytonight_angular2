@@ -4,13 +4,30 @@ import {PageNotFoundComponent} from "../../components/page-not-found/page-not-fo
 import {IndexComponent} from "../../components/index/index.component";
 import {AuthGuard} from "../../guards/auth.guard";
 import {UsersTableComponent} from "../../components/tables/users-table/users-table.component";
+import {EventsTableComponent} from "../../components/tables/events-table/events-table.component";
+import {ResetPasswordComponent} from "../../components/authorization/reset-password/reset-password.component";
+import {CommercialSettingsComponent} from "../../components/commercial/commercial-settings/commercial-settings.component";
+import {SigninComponent} from "../../components/authorization/signin/signin.component";
+import {ProfileComponent} from "../../components/profile/profile.component";
+import {HelpPageComponent} from "../../components/help-page/help-page.component";
 
 
 const appRoutes: Routes = [
-  { path: '', pathMatch: 'full', component: IndexComponent },
+  { path: 'reset-password',  component: ResetPasswordComponent },
+  { path: 'signin',  component: SigninComponent },
+  { path: 'adminpanel', component: IndexComponent,  canActivate: [AuthGuard],
+    children: [
+      { path: '', pathMatch:"full",  redirectTo: "events" },
+      { path: 'events',  component: EventsTableComponent },
+      { path: 'profile',  component: ProfileComponent },
+      { path: 'commercial',  component: CommercialSettingsComponent },
+      { path: 'help',  component: HelpPageComponent },
+      { path: 'users/:type',  component: UsersTableComponent },
+      { path: '**', component: PageNotFoundComponent }
+    ]
+  },
 
- // { path: 'users/:type',  component: UsersTableComponent },
-  { path: 'users/:type',  component: UsersTableComponent },
+
   // { path: 'credits', component: MycreditstableComponent, canActivate: [AuthGuard],
   //   children: [
   //     {

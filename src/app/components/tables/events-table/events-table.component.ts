@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {EventEntity} from "../../../models/event-entity";
+import {DataResponse} from "../../../models/dataResponse";
+import {AdminService} from "../../../services/api/admin.service";
+import {UserEntity} from "../../../models/user";
+import {Observable} from "rxjs/Rx";
 
 @Component({
   selector: 'app-events-table',
@@ -7,9 +12,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsTableComponent implements OnInit {
 
-  constructor() { }
+  events:DataResponse<EventEntity> = new DataResponse<EventEntity>(0, []);
+
+  apiMethod:Function;
+  constructor(private  adminService:AdminService) { }
 
   ngOnInit() {
+    this.apiMethod = (offset:number, limit:number):Observable<DataResponse<EventEntity>> => {
+      return this.adminService.getEvents(offset,limit);
+    }
+
   }
+
+  dataReceived(data) {
+    this.events.items.length = 0;
+    this.events.items.push.apply(this.events.items, data.items);
+
+  }
+
 
 }

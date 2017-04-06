@@ -1,3 +1,45 @@
-<p>
-  events-table works!
-</p>
+<app-basetable (dataEmitter) = "dataReceived($event)" [apiMethod] = "apiMethod" >
+
+  <caption>Events</caption>
+  <thead>
+  <tr>
+    <th>Id</th>
+    <th>date</th>
+    <th>party_name</th>
+    <th>location/zip_code</th>
+    <th>tables/bottles</th>
+    <th>tickets</th>
+    <th>club_name/club_capacity</th>
+    <th>Delete</th>
+
+    <!--private _id_event: number;-->
+    <!--private _club_name: string;-->
+    <!--private _date: string;-->
+    <!--private _location: string;-->
+    <!--private _club_capacity: string;-->
+    <!--private _party_name: string;-->
+    <!--private _zip_code: string;-->
+    <!--private _bottles: BottleEntity[];-->
+    <!--private _tickets:TicketEntity[];-->
+    <!--private _tables: TableEntity[];-->
+    <!--private _photos:PhotoEntity[];-->
+    <!--private _users: UserEntity[];-->
+
+  </tr>
+
+  </thead>
+  <tbody>
+  <tr *ngFor="let event of events.items">
+    <td>{{event.id_event}}</td>
+    <td>{{event.date}}</td>
+    <td>{{event.party_name}}</td>
+    <td>{{event.location}}/{{event.zip_code}}</td>
+    <td>{{event.tables}}/{{event.bottles}}</td>
+    <td>{{event.tickets}}</td>
+    <td>{{event.club_name}}/{{event.club_capacity}}</td>
+    <td><button class="btn btn-danger" >Delete</button></td>
+
+
+  </tr>
+  </tbody>
+</app-basetable>

@@ -19,6 +19,12 @@ import {IndexComponent} from "./components/index/index.component";
 import {PageNotFoundComponent} from "./components/page-not-found/page-not-found.component";
 import {AdminService} from "./services/api/admin.service";
 import {LoggerService} from "./services/logger/logger.service";
+import { CommercialSettingsComponent } from './components/commercial/commercial-settings/commercial-settings.component';
+import { ResetPasswordComponent } from './components/authorization/reset-password/reset-password.component';
+import { SigninComponent } from './components/authorization/signin/signin.component';
+import {AuthenticationService} from "./services/api/authentication.service";
+import { ProfileComponent } from './components/profile/profile.component';
+import { HelpPageComponent } from './components/help-page/help-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +38,12 @@ import {LoggerService} from "./services/logger/logger.service";
     EventsTableComponent,
     UsersTableComponent,
     BasetableComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    CommercialSettingsComponent,
+    ResetPasswordComponent,
+    SigninComponent,
+    ProfileComponent,
+    HelpPageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +58,7 @@ import {LoggerService} from "./services/logger/logger.service";
       }
     )
   ],
-  providers: [AdminService,LoggerService],
+  providers: [AdminService,LoggerService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

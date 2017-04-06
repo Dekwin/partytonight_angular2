@@ -28,13 +28,20 @@ export class AdminService {
   // }
 
 
-  getGoers(offset: number, limit: number):Observable<DataResponse<UserEntity>> {
+  getEvents(offset: number, limit: number):Observable<DataResponse<EventEntity>> {
+    var items:EventEntity[] = [];
+    for(var i = 0; i< 6; i++){
+      items.push(new EventEntity());
+    }
+    var result = new DataResponse<EventEntity>(items.length,items.slice(offset,offset+limit));
+    return Observable.of(result);
+  }
 
+  getGoers(offset: number, limit: number):Observable<DataResponse<UserEntity>> {
     var items:UserEntity[] = [];
     for(var i = 0; i< 6; i++){
       items.push(new UserEntity());
     }
-
     var result = new DataResponse<UserEntity>(items.length,items.slice(offset,offset+limit));
     return Observable.of(result);
   }
