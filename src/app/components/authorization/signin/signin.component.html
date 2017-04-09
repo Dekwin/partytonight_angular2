@@ -16,6 +16,8 @@
               <div class="form-group">
                 <input class="form-control" placeholder="Password" [(ngModel)] = "passwordInput" name="password" type="password" value="">
               </div>
+
+              <a routerLink="../reset-password" routerLinkActive="active">Forgot password?</a>
               <button class="btn btn-lg btn-success btn-block" (click)="signInClicked()" >Sign in</button>
             </fieldset>
           </form>

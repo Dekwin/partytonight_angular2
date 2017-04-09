@@ -34,10 +34,10 @@
     <td>{{event.date}}</td>
     <td>{{event.party_name}}</td>
     <td>{{event.location}}/{{event.zip_code}}</td>
-    <td>{{event.tables}}/{{event.bottles}}</td>
-    <td>{{event.tickets}}</td>
+    <td>{{event.tables.length}}/{{event.bottles.length}}</td>
+    <td>{{event.tickets.length}}</td>
     <td>{{event.club_name}}/{{event.club_capacity}}</td>
-    <td><button class="btn btn-danger" >Delete</button></td>
+    <td><button class="btn btn-danger" (click)="deleteEvent(event)">Delete</button></td>
 
 
   </tr>

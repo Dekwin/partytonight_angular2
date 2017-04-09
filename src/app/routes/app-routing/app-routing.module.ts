@@ -13,6 +13,7 @@ import {HelpPageComponent} from "../../components/help-page/help-page.component"
 
 
 const appRoutes: Routes = [
+  { path: '', pathMatch:"full",  redirectTo: "adminpanel" },
   { path: 'reset-password',  component: ResetPasswordComponent },
   { path: 'signin',  component: SigninComponent },
   { path: 'adminpanel', component: IndexComponent,  canActivate: [AuthGuard],
