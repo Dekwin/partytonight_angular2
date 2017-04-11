@@ -17,6 +17,8 @@ export class UserEntity {
   private _password:string;
 
   private _enable:boolean;
+  
+  private _verified:boolean;
 
   private _updatedDate:string;
 
@@ -29,7 +31,12 @@ export class UserEntity {
   private _billing: any;
 
   private _events: EventEntity[];
+  
 
+  //for session
+  private _token:string;
+  
+  
 
   get id_user():number{
       return this._id_user;
@@ -87,6 +94,14 @@ export class UserEntity {
       this._enable=value;
       }
 
+  get verified():boolean{
+    return this._verified;
+  }
+
+  set verified(value:boolean){
+    this._verified=value;
+  }
+
   get updatedDate():string{
       return this._updatedDate;
       }
@@ -135,6 +150,15 @@ export class UserEntity {
       this._events=value;
       }
 
+
+    get token():string {
+      return this._token;
+    }
+
+  
+  set token(value:string){
+      this._token=value;
+      }
 
   constructor(id_user:number = 1, userName:string = "Unnamed", phoneNumber:string = "0000", email:string = "email@email.email", emergencyContact:string = "0000", password:string = "passw", enable:boolean = true, updatedDate:string = "date", createdDate:string = "date", billingEmail:string = "billing@email.email", role:any = "role", billing:any = "billing id", events:EventEntity[] = []) {
       this._id_user = id_user;

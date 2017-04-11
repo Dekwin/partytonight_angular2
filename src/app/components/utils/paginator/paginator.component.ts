@@ -27,10 +27,12 @@ export class PaginatorComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     //if(changes["apiMethod"].currentValue != changes["apiMethod"].previousValue) {
+    if(!changes["apiMethod"].isFirstChange()) {
       this.pagedArrays.length = 0;
-    this.pager = this.pagerService.getPager(1, null);
+      this.pager = this.pagerService.getPager(1, null);
       this.setPage(1);
-    //}
+      //}
+    }
 
   }
 

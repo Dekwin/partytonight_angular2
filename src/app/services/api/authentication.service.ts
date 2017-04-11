@@ -4,13 +4,14 @@ import { LoggerService } from '../logger/logger.service';
 import { environment } from '../../../environments/environment';
 import {Observable} from "rxjs/Rx";
 import {UserEntity} from "../../models/user";
+import {Router} from "@angular/router";
 
 @Injectable()
 export class AuthenticationService {
 
-  private options = new RequestOptions({headers: new Headers()});
+  private options = new RequestOptions({headers: new Headers(),  withCredentials: true });
 
-  constructor(private http: Http,private logger: LoggerService) { }
+  constructor(private router: Router,private http: Http,private logger: LoggerService) { }
 
   // login(username: string, password: string) {
   //
@@ -45,25 +46,43 @@ export class AuthenticationService {
   //mock
   login(username: string, password: string): Observable<UserEntity>{
 
-    var user = new UserEntity();
+      let credentials = username + ":" + password;
+      let authorizationHeader = "Basic " + btoa(credentials);//toBase64();
+      let headers = new Headers({"Authorization": authorizationHeader});
+    headers.append("Content-Type", "application/x-www-form-urlencoded");
 
-    localStorage.setItem('currentUser', JSON.stringify(user));
+      let options = new RequestOptions({headers: headers });
 
- 
-    return Observable.of(user)
+    return this.http.get(environment.baseApiPath + '/signin', options)
+        .map((response: Response) => {
+
+          let entity = response.json();
+
+          if (entity && entity.token) {
+            var user = new UserEntity();
+            user.email = username;
+            user.token = entity.token;
+
+
+
+            localStorage.setItem('currentUser', JSON.stringify(user));
+
+
+
+          }
+        }).catch(this.handleError);
   }
 
-  //mock
   getCurrentUser():UserEntity {
     let userJson = JSON.parse(localStorage.getItem('currentUser'));
     if(!userJson) return null;
-
-    return new UserEntity();
+    return userJson;
   }
 
   logout() {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
+    this.router.navigate(['/signin']);
   }
 
 
@@ -71,7 +90,6 @@ export class AuthenticationService {
   private handleError = (res: Response): Observable<any> => {
     this.logger.warn(res.toString());
 
-    console.log("user en error");
 
     return Observable.of({
       data: null,

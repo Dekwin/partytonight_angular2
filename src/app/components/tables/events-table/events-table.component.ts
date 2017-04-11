@@ -24,12 +24,17 @@ export class EventsTableComponent implements OnInit {
 
   }
 
-  deleteEvent(event:EventEntity){
-    this.events.items.splice(this.events.items.indexOf(event), 1);
-  }
+  // deleteEvent(event:EventEntity){
+  //   this.events.items.splice(this.events.items.indexOf(event), 1);
+  // }
 
-  dataReceived(data) {
+  dataReceived(data: DataResponse<EventEntity>) {
     this.events.items.length = 0;
+    console.log("data")
+    console.log()
+
+   
+
     this.events.items.push.apply(this.events.items, data.items);
 
   }

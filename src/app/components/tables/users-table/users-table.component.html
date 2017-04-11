@@ -28,7 +28,7 @@
       <button class="btn btn-success" (click)="setEnable(user,true)" *ngSwitchCase="false">Enable</button>
       <div *ngSwitchDefault>-</div>
     </div></td>
-    <td>-</td>
+    <td><button *ngIf="!user.verified" class="btn btn-warning" (click)="verifyUser(user)" >Verify email</button></td>
     <td><button class="btn btn-danger" (click)="deleteUser(user)" >Delete</button></td>
 
 

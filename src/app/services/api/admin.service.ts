@@ -17,6 +17,11 @@ export class AdminService {
   }
 
 
+  ROLE_ADMIN = "ROLE_ADMIN"
+  ROLE_PARTY_MAKER = "ROLE_PARTY_MAKER"
+  ROLE_STREET_DANCER = "ROLE_STREET_DANCER"
+
+
   //
   // getEvents(offset: number, limit: number):Observable<DataResponse<EventEntity>> {
   //
@@ -29,44 +34,106 @@ export class AdminService {
 
 
   getEvents(offset: number, limit: number):Observable<DataResponse<EventEntity>> {
-    var items:EventEntity[] = [];
-    for(var i = 0; i< 6; i++){
-      items.push(new EventEntity());
-    }
-    var result = new DataResponse<EventEntity>(items.length,items.slice(offset,offset+limit));
-    return Observable.of(result);
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('offset', offset.toString());
+    params.set('limit', limit.toString());
+      return this.http.get(this.path + '/admin/events', this.token(params)).map(r => {
+        var json = r.json();
+        return json;
+      }).catch(this.handleError);
   }
 
+
+
   getGoers(offset: number, limit: number):Observable<DataResponse<UserEntity>> {
-    var items:UserEntity[] = [];
-    for(var i = 0; i< 6; i++){
-      items.push(new UserEntity());
-    }
-    var result = new DataResponse<UserEntity>(items.length,items.slice(offset,offset+limit));
-    return Observable.of(result);
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('offset', offset.toString());
+    params.set('limit', limit.toString());
+    params.set('role', this.ROLE_STREET_DANCER);
+
+    return this.http.get(this.path + '/admin/users', this.token(params)).map(r => {
+      var json = r.json();
+      console.log(json)
+      return json;
+    }).catch(this.handleError);
   }
 
 
   getPromoters(offset: number, limit: number):Observable<DataResponse<UserEntity>> {
+    let params: URLSearchParams = new URLSearchParams();
+    params.set('offset', offset.toString());
+    params.set('limit', limit.toString());
+    params.set('role', this.ROLE_PARTY_MAKER);
 
-    var items:UserEntity[] = [];
-    for(var i = 0; i< 38; i++){
-      items.push(new UserEntity());
-    }
-
-    var result = new DataResponse<UserEntity>(items.length,items.slice(offset,offset+limit));
-    return Observable.of(result);
+    return this.http.get(this.path + '/admin/users', this.token(params)).map(r => {
+      var json = r.json();
+      console.log(json)
+      return json;
+    }).catch(this.handleError);
   }
+
+
+  deleteUser(id: number):Observable<void> {
+    return this.http.post(this.path + '/admin/users/delete',{id:id},this.token()).map(r => {
+      return r;
+    }).catch(this.handleError);
+  }
+
+
+
+
+  verifyUser(id: number):Observable<void> {
+    return this.http.post(this.path + '/admin/users/verify',{id:id}, this.token()).map(r => {
+      return r;
+    }).catch(this.handleError);
+  }
+
+
+  lockUser(id: number):Observable<void> {
+    return this.http.post(this.path + '/admin/users/lock',{id:id}, this.token()).map(r => {
+      return r;
+    }).catch(this.handleError);
+  }
+
+  unlockUser(id: number):Observable<void> {
+    return this.http.post(this.path + '/admin/users/unlock',{id:id}, this.token()).map(r => {
+      return r;
+    }).catch(this.handleError);
+  }
+
+  changeAdminCredentials(newEmail:string,newPassword:string):Observable<void> {
+    return this.http.post(this.path + '/admin/credentials',{newEmail:newEmail,newPassword:newPassword}, this.token()).map(r => {
+      return r;
+    }).catch(this.handleError);
+  }
+
+
+  //paypal
+  commercialSetFee(feePercent: number):Observable<void> {
+    return this.http.post(this.path + '/admin/commercial/fee',{amount:feePercent},this.token()).map(r => {
+      return r;
+    }).catch(this.handleError);
+  }
+
+  commercialGetFee():Observable<DataResponse<EventEntity>> {
+    return this.http.get(this.path + '/admin/commercial/fee', this.token()).map(r => {
+      var json = r.json();
+      return json;
+    }).catch(this.handleError);
+  }
+
+
 
 
 
   private token(params:URLSearchParams = null) {
     // create authorization header with token token
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser && currentUser.token) {
+    if (currentUser && currentUser._token) {
 
 
-      let headers = new Headers({'x-auth-token': currentUser.token});
+
+      let headers = new Headers({'x-auth-token': currentUser._token});
       if (params) {
         return new RequestOptions({headers: headers, search: params});
       } else {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {DataResponse} from "../../../models/dataResponse";
 import {UserEntity} from "../../../models/user";
 import {AdminService} from "../../../services/api/admin.service";
@@ -19,9 +19,8 @@ export class UsersTableComponent implements OnInit {
   apiMethod:Function;
 
   constructor(private route:ActivatedRoute,
-              private router:Router,private adminService:AdminService) {
+              private router:Router, private adminService:AdminService) {
   }
-
 
 
   ngOnInit() {
@@ -29,33 +28,52 @@ export class UsersTableComponent implements OnInit {
   }
 
 
-
-  setUsersWithType(){
+  setUsersWithType() {
     this.route.params.subscribe((params:Params) => {
 
       this.userType = params["type"];
-      switch (this.userType){
+      switch (this.userType) {
         case "goers":
           this.apiMethod = (offset:number, limit:number):Observable<DataResponse<UserEntity>> => {
-            return this.adminService.getGoers(offset,limit);
+            return this.adminService.getGoers(offset, limit);
           }
-              break;
+          break;
         case "promoters":
           this.apiMethod = (offset:number, limit:number):Observable<DataResponse<UserEntity>> => {
-            return this.adminService.getPromoters(offset,limit);
+            return this.adminService.getPromoters(offset, limit);
           }
-              break;
+          break;
       }
 
 
     })
+  }
+
+  setEnable(user:UserEntity, enabled:boolean) {
+    if (enabled) {
+      this.adminService.unlockUser(user.id_user).subscribe(r => {
+        user.enable = enabled;
+      });
+    } else {
+      this.adminService.lockUser(user.id_user).subscribe(r => {
+        user.enable = enabled;
+      });
     }
 
-  setEnable(user: UserEntity, enabled: boolean){
-    user.enable = enabled;
+
   }
-  deleteUser(user:UserEntity){
-    this.users.items.splice(this.users.items.indexOf(user), 1);
+
+  deleteUser(user:UserEntity) {
+    this.adminService.deleteUser(user.id_user).subscribe(r => {
+      this.users.items.splice(this.users.items.indexOf(user), 1);
+    });
+
+  }
+
+  verifyUser(user:UserEntity) {
+    this.adminService.verifyUser(user.id_user).subscribe(r => {
+      user.verified = true;
+    });
   }
 
   dataReceived(data) {
