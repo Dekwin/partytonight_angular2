@@ -63,6 +63,9 @@ export class AuthenticationService {
             user.email = username;
             user.token = entity.token;
 
+           if(entity.role != "ROLE_ADMIN"){
+             throw new Error("You are not admin")
+           }
 
 
             localStorage.setItem('currentUser', JSON.stringify(user));

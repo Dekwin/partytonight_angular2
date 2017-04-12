@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
- // baseApiPath: 'http://45.55.226.134:8382/'
-  baseApiPath: 'http://localhost:8080'
+
+  baseApiPath: 'http://45.55.226.134:8080/partymaker'
+  //baseApiPath: 'http://localhost:8080'
 };
