@@ -108,6 +108,8 @@ export class AdminService {
   }
 
 
+
+
   //paypal
   commercialSetFee(feePercent: number):Observable<void> {
     return this.http.post(this.path + '/admin/commercial/fee',{amount:feePercent},this.token()).map(r => {
@@ -121,6 +123,7 @@ export class AdminService {
       return json;
     }).catch(this.handleError);
   }
+
 
 
 
@@ -141,6 +144,8 @@ export class AdminService {
       }
     }
   }
+
+
 
 
   private handleError = (res:Response):Observable<any> => {

@@ -89,6 +89,14 @@ export class AuthenticationService {
   }
 
 
+  resetPassword(email: string):Observable<void> {
+    return this.http.post(environment.baseApiPath + '/accounts/reset',{email:email}).map(r => {
+      return r;
+    }).catch(this.handleError);
+  }
+
+
+
 
   private handleError = (res: Response): Observable<any> => {
     this.logger.warn(res.toString());
