@@ -1,0 +1,34 @@
+<table class="table table-hover"  >
+
+  <caption>Transactions</caption>
+  <thead>
+  <tr>
+    <th>User id</th>
+    <th>User name</th>
+    <th>tickets bought ($)</th>
+    <th>tables bought ($)</th>
+    <th>bottles bought ($)</th>
+    <th>total spent ($)</th>
+
+    <!--<th>Delete</th>-->
+
+  </tr>
+
+
+  </thead>
+  <tbody>
+  <tr *ngFor="let transaction of transactions.items">
+    <td>{{transaction.userId}}</td>
+    <td>{{transaction.userName}}</td>
+    <td>{{transaction.ticketsSubtotal}}</td>
+    <td>{{transaction.tablesSubtotal}}</td>
+    <td>{{transaction.tableSales.length}}</td>
+    <td>{{transaction.bottlesSubtotal.length}}</td>
+    <td>{{transaction.subtotal}}</td>
+
+
+  </tr>
+  </tbody>
+
+</table>
+

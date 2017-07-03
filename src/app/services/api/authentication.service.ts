@@ -59,12 +59,12 @@ export class AuthenticationService {
           let entity = response.json();
 
           if (entity && entity.token) {
-            var user = new UserEntity();
+            let user = new UserEntity();
             user.email = username;
             user.token = entity.token;
 
-           if(entity.role != "ROLE_ADMIN"){
-             throw new Error("You are not admin")
+           if(entity.role != 'ROLE_ADMIN'){
+             throw new Error('You are not admin')
            }
 
 
@@ -76,7 +76,7 @@ export class AuthenticationService {
         }).catch(this.handleError);
   }
 
-  getCurrentUser():UserEntity {
+  getCurrentUser(): UserEntity {
     let userJson = JSON.parse(localStorage.getItem('currentUser'));
     if(!userJson) return null;
     return userJson;

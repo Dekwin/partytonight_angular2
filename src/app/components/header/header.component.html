@@ -1,21 +1,28 @@
 <!-- Header -->
-<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+<div id="top-nav" class="navbar navbar-default navbar-static-top">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-toggle"></span>
       </button>
-      <a class="navbar-brand" href="#">Party Tonight. Control Panel</a>
+      <a class="navbar-brand" href="#"><img [src]="logo" alt="Party Tonight. Control Panel"></a>
 
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
 
+        <li><a routerLink="events" routerLinkActive="active"><i class="glyphicon glyphicon-equalizer"></i> Events</a></li>
+        <li><a routerLink="users/goers" routerLinkActive="active"><i class="glyphicon glyphicon-user"></i> Party goers</a></li>
+        <li><a routerLink="users/promoters" routerLinkActive="active"><i class="glyphicon glyphicon-user"></i> Promoters</a></li>
+        <li><a routerLink="sales" routerLinkActive="active"><i class="glyphicon  glyphicon-usd"></i> Revenue / Sales</a></li>
+        <li><a routerLink="commercial" routerLinkActive="active"><i class="glyphicon glyphicon-credit-card"></i> Commercial settings</a></li>
+        <li><a routerLink="help" routerLinkActive="active"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li>
+
         <li class="dropdown">
           <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
             <i class="glyphicon glyphicon-user"></i> {{currentUser._email}}<span class="caret"></span></a>
           <ul id="g-account-menu" class="dropdown-menu" role="menu">
-            <li><a routerLink="profile">My Profile</a></li>
+            <li><a routerLink="profile"><i class="glyphicon  glyphicon-cog"></i> Account settings</a></li>
             <li><a (click)="logout()" href="signin"><i class="glyphicon glyphicon-lock"></i> Logout</a></li>
           </ul>
         </li>

@@ -1,0 +1,33 @@
+<app-basetable (dataEmitter) = "dataReceived($event)" [apiMethod] = "apiMethod" >
+
+  <caption>Revenue / Sales</caption>
+  <thead>
+  <tr>
+    <th>Event id</th>
+    <th>Event name</th>
+    <th>Withdrawn ($)</th>
+    <th>Tickets sale ($)</th>
+    <th>Tables sale ($)</th>
+    <th>Bottles sale ($)</th>
+    <th>Refunds ($)</th>
+    <!--<th>Delete</th>-->
+
+  </tr>
+
+  </thead>
+  <tbody>
+  <tr *ngFor="let sale of sales.items">
+    <td (click)="goToTransactions(sale.eventId)">{{sale.eventId}}</td>
+    <td>{{sale.eventName}}</td>
+    <td>{{sale.withdrawn}}</td>
+    <td>{{sale.ticketsSales}}</td>
+    <td>{{sale.tableSales}}</td>
+    <td>{{sale.bottleSales}}</td>
+    <td>{{sale.refunds}}</td>
+    <!--<td><button class="btn btn-danger" (click)="deleteEvent(event)">Delete</button></td>-->
+
+
+
+  </tr>
+  </tbody>
+</app-basetable>

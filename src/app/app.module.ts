@@ -25,6 +25,9 @@ import { SigninComponent } from './components/authorization/signin/signin.compon
 import {AuthenticationService} from "./services/api/authentication.service";
 import { ProfileComponent } from './components/profile/profile.component';
 import { HelpPageComponent } from './components/help-page/help-page.component';
+import { HeaderMenuComponent } from './components/header/menu/header-menu/header-menu.component';
+import { SalesTableComponent } from './components/tables/sales-table/sales-table.component';
+import { EventTransactionsTableComponent } from './components/tables/event-transactions-table/event-transactions-table.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { HelpPageComponent } from './components/help-page/help-page.component';
     ResetPasswordComponent,
     SigninComponent,
     ProfileComponent,
-    HelpPageComponent
+    HelpPageComponent,
+    HeaderMenuComponent,
+    SalesTableComponent,
+    EventTransactionsTableComponent
   ],
   imports: [
     BrowserModule,

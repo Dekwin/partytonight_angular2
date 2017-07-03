@@ -1,35 +1,93 @@
-<hr>
+
+<!--<div class="container">-->
+  <!--<nav class="navbar navbar-default">-->
+    <!--<div class="container-fluid">-->
+      <!--<div class="navbar-header">-->
+        <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar1">-->
+          <!--<span class="sr-only">Toggle navigation</span>-->
+          <!--<span class="icon-bar"></span>-->
+          <!--<span class="icon-bar"></span>-->
+          <!--<span class="icon-bar"></span>-->
+        <!--</button>-->
+        <!--<a class="navbar-brand" href="http://disputebills.com"><img [src]="logo" alt="Dispute Bills">-->
+        <!--</a>-->
+      <!--</div>-->
+      <!--<div id="navbar1" class="navbar-collapse collapse">-->
+
+
+        <!--<ul class="nav navbar-nav">-->
+          <!--<li><a routerLink="events" routerLinkActive="active"><i class="glyphicon glyphicon-equalizer"></i> All events</a></li>-->
+          <!--<li><a routerLink="users/goers" routerLinkActive="active"><i class="glyphicon glyphicon-user"></i> All party goers</a></li>-->
+          <!--<li><a routerLink="users/promoters" routerLinkActive="active"><i class="glyphicon glyphicon-user"></i> All promoters</a></li>-->
+          <!--<li><a routerLink="commercial" routerLinkActive="active"><i class="glyphicon glyphicon-credit-card"></i> Commercial settings</a></li>-->
+          <!--<li><a routerLink="profile" routerLinkActive="active"><i class="glyphicon  glyphicon-cog"></i> Account settings</a></li>-->
+          <!--<li><a routerLink="help" routerLinkActive="active"><i class="glyphicon glyphicon-question-sign"></i> Help</a></li>-->
+
+        <!--</ul>-->
+
+      <!--</div>-->
+      <!--&lt;!&ndash;/.nav-collapse &ndash;&gt;-->
+    <!--</div>-->
+    <!--&lt;!&ndash;/.container-fluid &ndash;&gt;-->
+  <!--</nav>-->
+<!--</div>-->
+
+
+
+
+
 <div class="container">
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Party tonight. Authorization</h3>
+  <div class="row login">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 well ">
+      <form role="form">
+        <div class="form-group text-center ">
+
+            <img [src]="logo" style="width:100%">
+            <!--<span class="glyphicon glyphicon-flash set-logo"></span>-->
+
         </div>
-        <div class="panel-body">
 
-          <form *ngIf="!signedIn" accept-charset="UTF-8">
-            <fieldset>
-              <div class="form-group">
-                <input class="form-control" placeholder="E-mail" [(ngModel)] = "emailInput" name="email" type="email">
-              </div>
-              <div class="form-group">
-                <input class="form-control" placeholder="Password" [(ngModel)] = "passwordInput" name="password" type="password" value="">
-              </div>
 
-              <a routerLink="../reset-password" routerLinkActive="active">Forgot password?</a>
-              <button class="btn btn-lg btn-success btn-block" (click)="signInClicked()" >Sign in</button>
-            </fieldset>
-          </form>
+        <!--<form *ngIf="!signedIn" accept-charset="UTF-8">-->
+          <!--<fieldset>-->
+            <!--<div class="form-group">-->
+              <!--<input class="form-control" placeholder="E-mail" [(ngModel)]="emailInput" name="email" type="email">-->
+            <!--</div>-->
+            <!--<div class="form-group">-->
+              <!--<input class="form-control" placeholder="Password" [(ngModel)]="passwordInput" name="password"-->
+                     <!--type="password" value="">-->
+            <!--</div>-->
 
-          <div *ngIf="signedIn">
+            <!--<a routerLink="../reset-password" routerLinkActive="active">Forgot password?</a>-->
+            <!--<button class="btn btn-lg btn-success btn-block" (click)="signInClicked()">Sign in</button>-->
+          <!--</fieldset>-->
+        <!--</form>-->
+
+
+
+        <div *ngIf="!signedIn" >
+
+        <div class="form-group">
+          <input   placeholder="E-mail" class="form-control input-lg" [(ngModel)]="emailInput" name="email" type="email">
+        </div>
+        <div class="form-group">
+          <input placeholder="Password" class="form-control input-lg" [(ngModel)]="passwordInput" name="password"
+                 type="password" value="">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default btn-lg btn-block btn-success" (click)="signInClicked()">Sign in</button>
+        </div>
+        <div class="form-group text-center last-row">
+
+          <a  routerLink="../reset-password" routerLinkActive="active">Forgot password?</a>
+        </div>
+
+        </div>
+        <div *ngIf="signedIn">
           <p>You currently signed in!</p>
-          <button class="btn btn-lg btn-danger btn-block" (click)="signOutClicked()" >Sign out</button>
-            </div>
-
-
+          <button class="btn btn-lg btn-danger btn-block" (click)="signOutClicked()">Sign out</button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </div>

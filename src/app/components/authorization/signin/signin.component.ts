@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from "../../../services/api/authentication.service";
-import {Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {AuthenticationService} from '../../../services/api/authentication.service';
+import {Router} from '@angular/router';
+import {environment} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-signin',
@@ -9,12 +10,13 @@ import {Router} from "@angular/router";
 })
 export class SigninComponent implements OnInit {
 
-  private emailInput:string;
-  private passwordInput:string;
+  private emailInput: string;
+  private passwordInput: string;
+  private logo: string = environment.fullImagePath;
 
   private signedIn = this.authService.getCurrentUser();
 
-  constructor(private router: Router,private authService:AuthenticationService) {
+  constructor(private router: Router, private authService: AuthenticationService) {
 
   }
 
@@ -22,19 +24,19 @@ export class SigninComponent implements OnInit {
     this.signedIn = this.authService.getCurrentUser();
   }
 
-  signInClicked(){
-    this.authService.login(this.emailInput,this.passwordInput).subscribe(val => {
+  signInClicked() {
+    this.authService.login(this.emailInput, this.passwordInput).subscribe(val => {
       this.signedIn = this.authService.getCurrentUser();
-      if(this.signedIn) {
+      if (this.signedIn) {
         this.router.navigate(['/adminpanel']);
-      }else{
-        //TODO change alert
-        alert("Wrong email or password!");
+      } else {
+        // TODO change alert
+        alert('Wrong email or password!');
       }
-    })
+    });
   }
 
-  signOutClicked(){
+  signOutClicked() {
     this.authService.logout();
     this.signedIn = this.authService.getCurrentUser();
   }
